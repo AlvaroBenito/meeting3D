@@ -19,7 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\FaceDetection.cpp" />
     <ClCompile Include="src\meeting3D.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\FaceDetection.h" />
+    <ClInclude Include="src\utils\BasicGeometry.hpp" />
+    <ClInclude Include="src\utils\Timer.hpp" />
+    <ClInclude Include="src\utils\Vector2D.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -84,7 +91,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\alvar\Documents\openCV\opencv\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\alvar\Documents\openCV\opencv\build\include;C:\Users\alvar\Downloads\Universidad\Master\TFM\Repo\meeting3D\meeting3D\headers;$(IncludePath)</IncludePath>
     <ExternalIncludePath>C:\Users\alvar\Documents\openCV\opencv\build\include;$(ExternalIncludePath)</ExternalIncludePath>
     <LibraryPath>C:\Users\alvar\Documents\openCV\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
