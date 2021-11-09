@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "faceDetection\faceDetection.hpp"
+#include <faceDetection/faceDetection.hpp>
 
 
 using namespace cv;
@@ -17,8 +17,9 @@ int main() {
     String haarCascadeXmlPath = "resources/haarcascade_frontalface_default.xml";
     double scaleFactor = 1.1;
     int minNeighbors = 3;
+    int minSize = 100;
 
-    faceDetectionInput faceInput(camera, faceCascade, haarCascadeXmlPath, scaleFactor, minNeighbors);
+    faceDetectionInput faceInput(camera, faceCascade, haarCascadeXmlPath, scaleFactor, minNeighbors, minSize);
     FaceDetection faceDetection(faceInput);
 
     faceDetection.solve();    

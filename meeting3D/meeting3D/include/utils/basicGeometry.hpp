@@ -4,7 +4,6 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/objdetect.hpp>
 
-
 cv::Point2i getCenterPoint(cv::Point2i upperRight, cv::Point2i downLeft) {
 	
 	cv::Point2i result;
@@ -12,5 +11,3 @@ cv::Point2i getCenterPoint(cv::Point2i upperRight, cv::Point2i downLeft) {
 	result.y = (upperRight.y + downLeft.y) / 2;
 	return result;
 }
-
-

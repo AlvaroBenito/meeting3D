@@ -4,15 +4,16 @@
 
 class Timer {
 private:
-	std::chrono::time_point<std::chrono::steady_clock> start, end;
+	std::chrono::time_point<std::chrono::steady_clock> start;
+	std::chrono::time_point<std::chrono::steady_clock> end;
 	std::chrono::duration<float> duration;
 	float* timer;
 
 public:
-	Timer(float* time){
+	explicit Timer(float* time) : timer(time){
 		start = std::chrono::high_resolution_clock::now();
-		timer = time;
-		duration = start - start;
+		std::chrono::duration<float> startDuration(0.0);
+		duration = startDuration;
 	}
 
 	~Timer() {

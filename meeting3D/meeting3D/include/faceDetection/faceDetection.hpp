@@ -12,22 +12,24 @@ private:
 	faceDetectionInput faceDetectionData;
 
 	// Output variables
-	double xCoordinate;
-	double yCoordinate;
-	double framesPerSecond;
-	bool faceDetected;
+	double xCoordinate = 0.0;
+	double yCoordinate = 0.0;
+	double framesPerSecond = 0.0;
+	bool faceDetected = false;
 
 public:
-	FaceDetection(faceDetectionInput input);
+	explicit FaceDetection(faceDetectionInput const& input);
 
 	void solve();
 
-	int getXCoordinate();
+	void detectFace(std::shared_ptr<float> timing, cv::Mat image, std::vector<cv::Rect> faces);
 
-	int getYCoordinate();
+	double getXCoordinate() const;
 
-	double getFramesPerSecond();
+	double getYCoordinate() const;
 
-	bool getFaceDetected();
+	double getFramesPerSecond() const;
+
+	bool getFaceDetected() const;
 
 };
