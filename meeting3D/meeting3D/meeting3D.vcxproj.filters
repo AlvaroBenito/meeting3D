@@ -18,21 +18,24 @@
     <ClCompile Include="src\meeting3D.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\FaceDetection.cpp">
+    <ClCompile Include="src\faceDetection\faceDetection.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\FaceDetection.h">
+    <ClInclude Include="include\faceDetection\faceDetection.hpp">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\utils\Vector2D.hpp">
+    <ClInclude Include="include\utils\vector2D.hpp">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\utils\BasicGeometry.hpp">
+    <ClInclude Include="include\utils\basicGeometry.hpp">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\utils\Timer.hpp">
+    <ClInclude Include="include\utils\timer.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\faceDetection\faceDetectionInput.hpp">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

@@ -9,9 +9,10 @@ private:
 	float* timer;
 
 public:
-	Timer(float* time) {
+	Timer(float* time){
 		start = std::chrono::high_resolution_clock::now();
 		timer = time;
+		duration = start - start;
 	}
 
 	~Timer() {

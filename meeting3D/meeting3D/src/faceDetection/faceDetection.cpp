@@ -1,28 +1,27 @@
-#include "FaceDetection.h"
+#include "faceDetection\faceDetection.hpp"
 #include <iostream>
-#include "utils/BasicGeometry.hpp"
+#include "utils/basicGeometry.hpp"
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/objdetect.hpp>
-#include "utils/Timer.hpp"
+#include "utils/timer.hpp"
+#include "utils/vector2D.hpp"
+
 
 
 #include <fstream>
 
-FaceDetection::FaceDetection(cv::VideoCapture camera, cv::CascadeClassifier cascadeClassifier, cv::String haarCascadeXmlPath) {
-	this->camera = camera;
-	this->faceCascade = cascadeClassifier;
-	this->haarCascadeXmlPath = haarCascadeXmlPath;
+FaceDetection::FaceDetection(faceDetectionInput input) : faceDetectionData(input), xCoordinate(0.0), yCoordinate(0.0), framesPerSecond(0.0), faceDetected(false) {
 
-	faceCascade.load(haarCascadeXmlPath);
+	this->faceDetectionData.faceCascade.load(input.haarCascadeXmlPath);
 }
 
 
 void FaceDetection::solve() {
 	
 	// Check if XML was not loaded
-	if (faceCascade.empty()) {
+	if (faceDetectionData.faceCascade.empty()) {
 		std::cout << "XML file not found" << std::endl;
 		return;
 	}
@@ -35,7 +34,7 @@ void FaceDetection::solve() {
 
 	//Get camera resolution for resizing
 
-	camera.read(image);
+	faceDetectionData.camera.read(image);
 	
 	
 
@@ -46,11 +45,11 @@ void FaceDetection::solve() {
 		float* timing = new float;
 		{
 			Timer timer(timing);
-			camera.read(image);
+			faceDetectionData.camera.read(image);
 
 			faces.clear();
 
-			faceCascade.detectMultiScale(image, faces, 1.2, 10);
+			faceDetectionData.faceCascade.detectMultiScale(image, faces, faceDetectionData.scaleFactor, faceDetectionData.minNeighbors);
 
 			cv::Point2i center;
 			for (int i = 0; i < faces.size(); i++) {
@@ -70,6 +69,7 @@ void FaceDetection::solve() {
 				std::cout << "NotDetected" << std::endl;
 			}
 		}
+		
 		framesPerSecond = 1.0f / *timing;
 		std::cout << framesPerSecond << std::endl;
 		

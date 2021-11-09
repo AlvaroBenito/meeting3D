@@ -2,25 +2,23 @@
 
 #include <opencv2/videoio.hpp>
 #include <opencv2/objdetect.hpp>
-
+#include "faceDetectionInput.hpp"
 
 
 class FaceDetection {
 private:
 
 	// Input variables
-	cv::VideoCapture camera;
-	cv::CascadeClassifier faceCascade;
-	cv::String haarCascadeXmlPath;
+	faceDetectionInput faceDetectionData;
 
 	// Output variables
-	int xCoordinate;
-	int yCoordinate;
+	double xCoordinate;
+	double yCoordinate;
 	double framesPerSecond;
 	bool faceDetected;
 
 public:
-	FaceDetection(cv::VideoCapture camera, cv::CascadeClassifier cascadeClassifier, cv::String haarCascadeXmlPath);
+	FaceDetection(faceDetectionInput input);
 
 	void solve();
 
