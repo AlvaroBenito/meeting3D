@@ -1,7 +1,9 @@
 #pragma once
 #include<chrono>
 
-
+/// <summary>
+/// Class that allows the programmer to time a specific piece of code within a scope
+/// </summary>
 class Timer {
 private:
 	std::chrono::time_point<std::chrono::steady_clock> start;

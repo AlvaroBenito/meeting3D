@@ -2,16 +2,19 @@
 //
 
 #include <iostream>
-
-#include <faceDetection/faceDetection.hpp>
+#include <faceDetection/cascadeFaceDetection.hpp>
 
 
 using namespace cv;
 using namespace std;
 
-
+/// <summary>
+/// Main function of the program
+/// </summary>
+/// <returns></returns>
 int main() {
 
+    // Creation of all the necessary variables for the face detection algorithm
     VideoCapture camera(1);
     CascadeClassifier faceCascade;
     String haarCascadeXmlPath = "resources/haarcascade_frontalface_default.xml";
@@ -19,10 +22,10 @@ int main() {
     int minNeighbors = 3;
     int minSize = 100;
 
+    // Generation of the face detection algorithm and call
     faceDetectionInput faceInput(camera, faceCascade, haarCascadeXmlPath, scaleFactor, minNeighbors, minSize);
-    FaceDetection faceDetection(faceInput);
-
-    faceDetection.solve();    
+    cascadeFaceDetection detect(faceInput);
+    detect.solve();    
 
     return 0;
 }

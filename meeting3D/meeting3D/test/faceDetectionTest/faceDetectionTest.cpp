@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "../../include/faceDetection/faceDetection.hpp"
+#include "../../include/faceDetection/cascadeFaceDetection.hpp"
 
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;

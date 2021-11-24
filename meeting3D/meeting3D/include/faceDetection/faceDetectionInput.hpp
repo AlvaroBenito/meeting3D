@@ -3,6 +3,9 @@
 #include <opencv2/videoio.hpp>
 #include <opencv2/objdetect.hpp>
 
+/// <summary>
+/// Structure that contains all of the necessary inputs for the cascadeFaceDetection class
+/// </summary>
 struct faceDetectionInput {
 	cv::VideoCapture camera;
 	cv::CascadeClassifier faceCascade;

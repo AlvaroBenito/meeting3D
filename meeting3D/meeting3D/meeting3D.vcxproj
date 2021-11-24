@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\faceDetection\faceDetection.cpp" />
+    <ClCompile Include="src\faceDetection\cascadeFaceDetection.cpp" />
     <ClCompile Include="src\meeting3D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\faceDetection\faceDetection.hpp" />
+    <ClInclude Include="include\faceDetection\cascadeFaceDetection.hpp" />
     <ClInclude Include="include\faceDetection\faceDetectionInput.hpp" />
     <ClInclude Include="include\utils\basicGeometry.hpp" />
     <ClInclude Include="include\utils\timer.hpp" />
