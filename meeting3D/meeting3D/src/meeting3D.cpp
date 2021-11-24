@@ -9,7 +9,7 @@ using namespace cv;
 using namespace std;
 
 /// <summary>
-/// Main function of the program
+/// Main function of the program. The program flow is contained in this function.
 /// </summary>
 /// <returns></returns>
 int main() {
