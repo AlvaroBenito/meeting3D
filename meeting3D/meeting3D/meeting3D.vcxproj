@@ -99,7 +99,7 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>C:\Users\alvar\Documents\openCV\opencv\build\include;C:\Users\alvar\Downloads\Universidad\Master\TFM\Repo\meeting3D\meeting3D\include;$(IncludePath)</IncludePath>
     <ExternalIncludePath>C:\Users\alvar\Documents\openCV\opencv\build\include;$(ExternalIncludePath)</ExternalIncludePath>
-    <LibraryPath>$(SolutionDir)Dependencies\lib;C:\Users\alvar\Documents\openCV\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)Dependencies\opencv2\lib;C:\Users\alvar\Documents\openCV\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
