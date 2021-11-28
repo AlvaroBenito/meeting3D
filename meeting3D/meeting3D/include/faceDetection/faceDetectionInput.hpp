@@ -13,7 +13,8 @@ struct faceDetectionInput {
 	double scaleFactor;
 	int minNeighbors;
 	int minSize;
+	int frameRateLimit;
 
-	faceDetectionInput(cv::VideoCapture const& cam, cv::CascadeClassifier classifier, cv::String const& xmlPath, double scale, int neighbors, int size) :
-	camera(cam), faceCascade(classifier), haarCascadeXmlPath(xmlPath), scaleFactor(scale), minNeighbors(neighbors), minSize(size){}
+	faceDetectionInput(cv::VideoCapture const& cam, cv::CascadeClassifier classifier, cv::String const& xmlPath, double scale, int neighbors, int size, int frameRateLimit) :
+	camera(cam), faceCascade(classifier), haarCascadeXmlPath(xmlPath), scaleFactor(scale), minNeighbors(neighbors), minSize(size), frameRateLimit(frameRateLimit){}
 };

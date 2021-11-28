@@ -20,7 +20,7 @@ enum class errorCode {
 /// <summary>
 /// Class that implements a face detection algorithm based on Viola-Jones method for real time video applications
 /// </summary>
-class cascadeFaceDetection {
+class faceDetection {
 
 private:
 
@@ -37,7 +37,7 @@ private:
 	bool faceDetected = false;
 
 public:
-	explicit cascadeFaceDetection(faceDetectionInput const& input);
+	explicit faceDetection(faceDetectionInput const& input);
 
 	void solve();
 

@@ -1,4 +1,4 @@
-#include <faceDetection/cascadeFaceDetection.hpp>
+#include <faceDetection/faceDetection.hpp>
 #include <iostream>
 #include <utils/basicGeometry.hpp>
 #include <opencv2/imgcodecs.hpp>
@@ -16,7 +16,7 @@
 /// cascadeFaceDetection constructor from faceDetectionInput variable and checks for possible errors
 /// </summary>
 /// <param name="input"></param>
-cascadeFaceDetection::cascadeFaceDetection(faceDetectionInput const& input) : faceDetectionData(input) {
+faceDetection::faceDetection(faceDetectionInput const& input) : faceDetectionData(input) {
 	
 	// Loads parameters and sets error to NO_ERROR status
 	this->faceDetectionData.faceCascade.load(input.haarCascadeXmlPath);
@@ -25,28 +25,28 @@ cascadeFaceDetection::cascadeFaceDetection(faceDetectionInput const& input) : fa
 	// Checks different errors during object creation
 	if (!this->faceDetectionData.camera.isOpened()) {
 		this->error = errorCode::CAM_ERROR;
-		throw "Camera not found";
-	}
-	if (this->faceDetectionData.faceCascade.empty()) {
-		this->error = errorCode::CLASSIFIER_ERROR;
-		throw "Classifier not initialized correctly";
+		throw std::invalid_argument("Could not find any camera connected to the specified port");
 	}
 	if (this->faceDetectionData.faceCascade.empty()) {
 		this->error = errorCode::XML_ERROR;
-		throw "XML not located";
+		throw std::invalid_argument("Could not find haarCascadeXml");
+	}
+	if (this->faceDetectionData.faceCascade.empty()) {
+		this->error = errorCode::CLASSIFIER_ERROR;
+		throw std::invalid_argument("Face detection classifier not initialized correctly");
 	}
 	if (this->faceDetectionData.scaleFactor <= 1) {
 		this->error = errorCode::SCALE_FACTOR_ERROR;
-		throw "Scale factor out of bounds (has to be higher than 1.0)";
+		throw std::out_of_range("Scale factor out of bounds (has to be higher than 1.0)");
 	}
 	if (this->faceDetectionData.minNeighbors <= 1) {
 		this->error = errorCode::MIN_NEIGHBOURS_ERROR;
-		throw "Min neighbors out of bounds (has to be higher than 1)";
+		throw std::out_of_range("Min neighbors out of bounds (has to be higher than 1)");
 	}
 }
 
 
-void cascadeFaceDetection::solve() {
+[[ noreturn ]]  void faceDetection::solve() {
 	
 	// Variable where the cam info will be stored
 	cv::Mat image;
@@ -85,15 +85,18 @@ void cascadeFaceDetection::solve() {
 			lastDetection = detectFace(croppedImage, faces, lastContour);
 			faceCenter = getCenterPoint(lastContour.tl(), lastContour.br());
 		}
-
+		
 		if (*timing != 0.0) {
 			framesPerSecond = 1.0f / *timing;
 			std::cout << framesPerSecond << "\n" << std::endl;
 		}
+		cv::imshow("Image", image);
+		cv::waitKey(2);
+		
 	}
 }
 
-bool cascadeFaceDetection::detectFace(cv::Mat image, std::vector<cv::Rect> faces, cv::Rect& lastContour) {
+bool faceDetection::detectFace(cv::Mat image, std::vector<cv::Rect> faces, cv::Rect& lastContour) {
 
 	faces.clear();
 
@@ -123,10 +126,10 @@ bool cascadeFaceDetection::detectFace(cv::Mat image, std::vector<cv::Rect> faces
 	return true;
 }
 
-double cascadeFaceDetection::getXCoordinate() const { return xCoordinate; }
+double faceDetection::getXCoordinate() const { return xCoordinate; }
 
-double cascadeFaceDetection::getYCoordinate() const { return yCoordinate; }
+double faceDetection::getYCoordinate() const { return yCoordinate; }
 
-double cascadeFaceDetection::getFramesPerSecond() const { return framesPerSecond; }
+double faceDetection::getFramesPerSecond() const { return framesPerSecond; }
 
-bool cascadeFaceDetection::getFaceDetected() const { return faceDetected; }
+bool faceDetection::getFaceDetected() const { return faceDetected; }
