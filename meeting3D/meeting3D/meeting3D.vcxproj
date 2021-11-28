@@ -19,12 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\faceDetection\cascadeFaceDetection.cpp" />
+    <ClCompile Include="src\faceDetection\cascadeFaceDetectionGenerator.cpp" />
     <ClCompile Include="src\faceDetection\faceDetection.cpp" />
     <ClCompile Include="src\meeting3D.cpp" />
+    <ClCompile Include="src\utils\basicGeometry.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\faceDetection\cascadeFaceDetection.hpp" />
+    <ClInclude Include="include\faceDetection\cascadeFaceDetectionGenerator.hpp" />
     <ClInclude Include="include\faceDetection\faceDetection.hpp" />
-    <ClInclude Include="include\faceDetection\faceDetectionInput.hpp" />
+    <ClInclude Include="include\faceDetection\cascadeFaceDetectionInput.hpp" />
     <ClInclude Include="include\utils\basicGeometry.hpp" />
     <ClInclude Include="include\utils\timer.hpp" />
     <ClInclude Include="include\utils\vector2D.hpp" />

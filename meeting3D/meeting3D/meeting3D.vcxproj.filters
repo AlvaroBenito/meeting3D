@@ -21,6 +21,15 @@
     <ClCompile Include="src\faceDetection\faceDetection.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="src\faceDetection\cascadeFaceDetection.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\basicGeometry.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faceDetection\cascadeFaceDetectionGenerator.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\faceDetection\faceDetection.hpp">
@@ -29,13 +38,19 @@
     <ClInclude Include="include\utils\vector2D.hpp">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\utils\basicGeometry.hpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="include\utils\timer.hpp">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\faceDetection\faceDetectionInput.hpp">
+    <ClInclude Include="include\faceDetection\cascadeFaceDetectionInput.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\faceDetection\cascadeFaceDetection.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\basicGeometry.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\faceDetection\cascadeFaceDetectionGenerator.hpp">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
