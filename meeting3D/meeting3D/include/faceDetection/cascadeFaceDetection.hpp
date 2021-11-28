@@ -1,14 +1,12 @@
 #pragma once
-
-#include <opencv2/videoio.hpp>
-#include <opencv2/objdetect.hpp>
-#include "faceDetectionInput.hpp"
+#include "faceDetection/faceDetection.hpp"
+#include <opencv2/imgproc.hpp>
 
 /// <summary>
 /// Enum for the possible errors for face detection algorithm
 /// </summary>
 enum class errorCode {
-	
+
 	NO_ERROR = 0,
 	XML_ERROR,
 	CAM_ERROR,
@@ -17,38 +15,20 @@ enum class errorCode {
 	MIN_NEIGHBOURS_ERROR
 };
 
-/// <summary>
-/// Class that implements a face detection algorithm based on Viola-Jones method for real time video applications
-/// </summary>
-class cascadeFaceDetection {
+class cascadeFaceDetection : public faceDetection{
 
 private:
 
 	// Input variables
-	faceDetectionInput faceDetectionData;
+	cascadeFaceDetectionInput faceDetectionData;
 
 	// Status variables
 	errorCode error;
 
-	// Output variables
-	double xCoordinate = 0.0;
-	double yCoordinate = 0.0;
-	double framesPerSecond = 0.0;
-	bool faceDetected = false;
-
 public:
-	explicit cascadeFaceDetection(faceDetectionInput const& input);
 
-	void solve();
+	explicit cascadeFaceDetection(cascadeFaceDetectionInput const& input, cv::VideoCapture camera);
 
-	bool detectFace(cv::Mat image, std::vector<cv::Rect> faces, cv::Rect& lastContour);
-
-	double getXCoordinate() const;
-
-	double getYCoordinate() const;
-
-	double getFramesPerSecond() const;
-
-	bool getFaceDetected() const;
-
+	bool getFace(cv::Mat image, cv::Rect& lastContour) override;
+	
 };
