@@ -27,8 +27,8 @@ private:
 
 public:
 
-	explicit cascadeFaceDetection(cascadeFaceDetectionInput const& input, cv::VideoCapture camera);
+	explicit cascadeFaceDetection(cascadeFaceDetectionInput const& input, cv::VideoCapture const& camera);
 
-	bool getFace(cv::Mat image, cv::Rect& lastContour) override;
+	bool findFace(cv::Mat image, cv::Rect& lastContour) override;
 	
 };

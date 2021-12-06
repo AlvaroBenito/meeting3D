@@ -23,13 +23,13 @@ private:
 	bool faceDetected = false;
 
 public:
-	explicit faceDetection(cv::VideoCapture camera);
+	explicit faceDetection(const cv::VideoCapture& camera);
 
 	virtual ~faceDetection() = default;
 
 	void solve();
 
-	virtual bool getFace(cv::Mat image, cv::Rect& lastContour) = 0;
+	virtual bool findFace(cv::Mat image, cv::Rect& lastContour) = 0;
 
 	cv::VideoCapture getCamera() const;
 

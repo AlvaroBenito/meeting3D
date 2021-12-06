@@ -30,6 +30,12 @@
     <ClCompile Include="src\faceDetection\cascadeFaceDetectionGenerator.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="src\faceDetection\dnnFaceDetection.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faceDetection\dnnFaceDetectionGenerator.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\faceDetection\faceDetection.hpp">
@@ -51,6 +57,15 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="include\faceDetection\cascadeFaceDetectionGenerator.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\faceDetection\dnnFaceDetection.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\faceDetection\dnnFaceDetectionInput.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\faceDetection\dnnFaceDetectionGenerator.hpp">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

@@ -19,8 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\faceDetection\dnnFaceDetection.cpp" />
     <ClCompile Include="src\faceDetection\cascadeFaceDetection.cpp" />
     <ClCompile Include="src\faceDetection\cascadeFaceDetectionGenerator.cpp" />
+    <ClCompile Include="src\faceDetection\dnnFaceDetectionGenerator.cpp" />
     <ClCompile Include="src\faceDetection\faceDetection.cpp" />
     <ClCompile Include="src\meeting3D.cpp" />
     <ClCompile Include="src\utils\basicGeometry.cpp" />
@@ -28,6 +30,9 @@
   <ItemGroup>
     <ClInclude Include="include\faceDetection\cascadeFaceDetection.hpp" />
     <ClInclude Include="include\faceDetection\cascadeFaceDetectionGenerator.hpp" />
+    <ClInclude Include="include\faceDetection\dnnFaceDetection.hpp" />
+    <ClInclude Include="include\faceDetection\dnnFaceDetectionGenerator.hpp" />
+    <ClInclude Include="include\faceDetection\dnnFaceDetectionInput.hpp" />
     <ClInclude Include="include\faceDetection\faceDetection.hpp" />
     <ClInclude Include="include\faceDetection\cascadeFaceDetectionInput.hpp" />
     <ClInclude Include="include\utils\basicGeometry.hpp" />

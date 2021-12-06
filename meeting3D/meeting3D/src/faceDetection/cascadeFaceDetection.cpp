@@ -6,7 +6,7 @@
 /// cascadeFaceDetection constructor from faceDetectionInput variable and checks for possible errors
 /// </summary>
 /// <param name="input"></param>
-cascadeFaceDetection::cascadeFaceDetection(cascadeFaceDetectionInput const& input, cv::VideoCapture camera) :  faceDetection(camera), faceDetectionData(input) {
+cascadeFaceDetection::cascadeFaceDetection(cascadeFaceDetectionInput const& input, cv::VideoCapture const& camera) :  faceDetection(camera), faceDetectionData(input) {
 
 	// Loads parameters and sets error to NO_ERROR status
 	this->faceDetectionData.faceCascade.load(input.haarCascadeXmlPath);
@@ -36,7 +36,7 @@ cascadeFaceDetection::cascadeFaceDetection(cascadeFaceDetectionInput const& inpu
 }
 
 
-bool cascadeFaceDetection::getFace(cv::Mat image, cv::Rect& lastContour) {
+bool cascadeFaceDetection::findFace(cv::Mat image, cv::Rect& lastContour) {
 	std::vector<cv::Rect> faces;
 	faces.clear();
 

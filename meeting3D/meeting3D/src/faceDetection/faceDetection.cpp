@@ -10,7 +10,13 @@
 #include <memory>
 #include <fstream>
 
-faceDetection::faceDetection(cv::VideoCapture camera) : camera(camera) {}
+#define MATLAB_TEST_ACTIVE
+#ifdef MATLAB_TEST_ACTIVE
+
+#endif
+
+
+faceDetection::faceDetection(const cv::VideoCapture& camera) : camera(camera) {}
 
 
 [[ noreturn ]]  void faceDetection::solve() {
@@ -38,10 +44,10 @@ faceDetection::faceDetection(cv::VideoCapture camera) : camera(camera) {}
 
 		camera.read(image);
 
-		if (lastDetection) {
+		if (lastDetection && !lastDetection) {
 			Timer timer(timing.get());
 			croppedImage = cropFaceSurrounding(image, faceCenter, lastContour.size());
-			lastDetection = getFace(croppedImage, lastContour);
+			lastDetection = findFace(croppedImage, lastContour);
 			cv::Point2i croppedFaceCenter = getCenterPoint(lastContour.tl(), lastContour.br());
 			cv::Point2i faceCenterMove(croppedFaceCenter.x - (croppedImage.cols / 2), croppedFaceCenter.y - croppedImage.rows / 2);
 			faceCenter = faceCenter + faceCenterMove;
@@ -49,9 +55,15 @@ faceDetection::faceDetection(cv::VideoCapture camera) : camera(camera) {}
 		else {
 			Timer timer(timing.get());
 			croppedImage = image;
-			lastDetection = getFace(croppedImage, lastContour);
+			lastDetection = findFace(croppedImage, lastContour);
 			faceCenter = getCenterPoint(lastContour.tl(), lastContour.br());
 		}
+
+#ifdef MATLAB_TEST_ACTIVE
+
+
+#endif
+
 		
 		if (*timing != 0.0) {
 			framesPerSecond = 1.0f / *timing;

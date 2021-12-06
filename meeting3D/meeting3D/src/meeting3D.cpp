@@ -5,6 +5,9 @@
 #include <opencv2/highgui.hpp>
 #include "opencv2/core/utils/logger.hpp"
 #include "faceDetection/cascadeFaceDetectionGenerator.hpp"
+#include "faceDetection/dnnFaceDetectionGenerator.hpp"
+
+#define DNN
 
 /// <summary>
 /// Main function of the program. The program flow is contained in this function.
@@ -18,10 +21,13 @@ int main() {
     // Declare camera port
     cv::VideoCapture camera(1);
 
-    // Generation of the face detection algorithm and call
-    cascadeFaceDetectionInput faceInput = initializeCascadeFaceDetector();
-
-    callCascadeFaceDetection(faceInput, camera);
+#ifdef DNN
+	dnnFaceDetectionInput faceInput = initializeDnnFaceDetector();
+    callDnnFaceDetection(faceInput, camera);
+#else
+	cascadeFaceDetectionInput faceInput = initializeCascadeFaceDetector();
+	callCascadeFaceDetection(faceInput, camera);
+#endif
 
     return 0;
 }
