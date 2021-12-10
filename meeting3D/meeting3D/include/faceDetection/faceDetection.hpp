@@ -5,6 +5,10 @@
 #include "cascadeFaceDetectionInput.hpp"
 
 
+enum class faceDetectionType {
+	CASCADE_CLASSIFIER = 0,
+	DNN_CLASSIFIER
+};
 
 /// <summary>
 /// Class that implements a face detection algorithm based on Viola-Jones method for real time video applications
@@ -30,6 +34,8 @@ public:
 	void solve();
 
 	virtual bool findFace(cv::Mat image, cv::Rect& lastContour) = 0;
+
+	virtual faceDetectionType getType() = 0;
 
 	cv::VideoCapture getCamera() const;
 

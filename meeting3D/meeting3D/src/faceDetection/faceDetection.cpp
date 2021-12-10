@@ -10,22 +10,13 @@
 #include <memory>
 #include <fstream>
 
-#define MATLAB_TEST_ACTIVE
-#ifdef MATLAB_TEST_ACTIVE
-
-#endif
-
 
 faceDetection::faceDetection(const cv::VideoCapture& camera) : camera(camera) {}
-
 
 [[ noreturn ]]  void faceDetection::solve() {
 	
 	// Variable where the cam info will be stored
 	cv::Mat image;
-
-	// Vector of Rect objects where the possible faces from the cascade classifier are stored
-	
 
 	// File initialization for experimental data retrieval
 	std::ofstream myfile;
@@ -36,6 +27,7 @@ faceDetection::faceDetection(const cv::VideoCapture& camera) : camera(camera) {}
 	cv::Rect lastContour;
 	cv::Mat croppedImage;
 	cv::Point2i faceCenter;
+	faceDetectionType classifier = this->getType();
 
 	// Infinite loop for face detection
 	while (true) {
@@ -43,8 +35,8 @@ faceDetection::faceDetection(const cv::VideoCapture& camera) : camera(camera) {}
 		auto timing = std::make_shared<float>();
 
 		camera.read(image);
-
-		if (lastDetection && !lastDetection) {
+		
+		if (lastDetection && classifier != faceDetectionType::DNN_CLASSIFIER) {
 			Timer timer(timing.get());
 			croppedImage = cropFaceSurrounding(image, faceCenter, lastContour.size());
 			lastDetection = findFace(croppedImage, lastContour);
@@ -58,12 +50,6 @@ faceDetection::faceDetection(const cv::VideoCapture& camera) : camera(camera) {}
 			lastDetection = findFace(croppedImage, lastContour);
 			faceCenter = getCenterPoint(lastContour.tl(), lastContour.br());
 		}
-
-#ifdef MATLAB_TEST_ACTIVE
-
-
-#endif
-
 		
 		if (*timing != 0.0) {
 			framesPerSecond = 1.0f / *timing;
@@ -74,6 +60,8 @@ faceDetection::faceDetection(const cv::VideoCapture& camera) : camera(camera) {}
 		
 	}
 }
+
+
 
 cv::VideoCapture faceDetection::getCamera() const { return camera; }
 

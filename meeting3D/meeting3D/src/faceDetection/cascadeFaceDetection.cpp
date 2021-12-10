@@ -71,3 +71,7 @@ bool cascadeFaceDetection::findFace(cv::Mat image, cv::Rect& lastContour) {
 
 	return true;
 }
+
+faceDetectionType cascadeFaceDetection::getType() {
+	return faceDetectionType::CASCADE_CLASSIFIER;
+}

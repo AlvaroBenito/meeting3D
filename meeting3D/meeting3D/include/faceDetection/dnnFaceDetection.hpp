@@ -12,7 +12,8 @@
 /// </summary>
 enum class errorCodeDnn {
 
-	NO_ERROR = 0
+	NO_ERROR = 0,
+	EMPTY_NET = 1
 	
 };
 
@@ -36,5 +37,5 @@ public:
 
 	bool findFace(cv::Mat image, cv::Rect& lastContour) override;
 
-
+	faceDetectionType getType() override;
 };

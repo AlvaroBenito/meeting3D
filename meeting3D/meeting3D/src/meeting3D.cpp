@@ -4,10 +4,9 @@
 #include <thread>
 #include <opencv2/highgui.hpp>
 #include "opencv2/core/utils/logger.hpp"
-#include "faceDetection/cascadeFaceDetectionGenerator.hpp"
-#include "faceDetection/dnnFaceDetectionGenerator.hpp"
+#include "faceDetection/faceDetectionInitializer.hpp"
 
-#define DNN
+//#define DNN
 
 /// <summary>
 /// Main function of the program. The program flow is contained in this function.

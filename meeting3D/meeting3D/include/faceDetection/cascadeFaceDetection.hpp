@@ -31,4 +31,5 @@ public:
 
 	bool findFace(cv::Mat image, cv::Rect& lastContour) override;
 	
+	faceDetectionType getType() override;
 };
