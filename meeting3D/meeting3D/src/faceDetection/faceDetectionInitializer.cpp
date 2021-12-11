@@ -38,11 +38,11 @@ cascadeFaceDetectionInput initializeCascadeFaceDetector() {
  * \param faceInput : parameters of the face detection algorithm
  * \param camera : camera object from opencv library
  */
-void callCascadeFaceDetection(cascadeFaceDetectionInput faceInput, cv::VideoCapture const& camera) {
+void callCascadeFaceDetection(cascadeFaceDetectionInput faceInput, cv::VideoCapture const& camera, faceDetectionOutput* output) {
 
 	try {
 		cascadeFaceDetection detect(faceInput, camera);
-		detect.solve();
+		detect.solve(output);
 	}
 	catch (const std::out_of_range& e) {
 		std::cout << e.what() << std::endl;
@@ -51,14 +51,14 @@ void callCascadeFaceDetection(cascadeFaceDetectionInput faceInput, cv::VideoCapt
 			std::cout << "Scale factor changed to 1.1" << std::endl;
 			std::cout << "Press enter to continue" << std::endl;
 			std::cin.get();
-			callCascadeFaceDetection(faceInput, camera);
+			callCascadeFaceDetection(faceInput, camera, output);
 		}
 		if (faceInput.minNeighbors <= 1) {
 			faceInput.minNeighbors = 3;
 			std::cout << "Min neighbors changed to 3" << std::endl;
 			std::cout << "Press enter to continue" << std::endl;
 			std::cin.get();
-			callCascadeFaceDetection(faceInput, camera);
+			callCascadeFaceDetection(faceInput, camera, output);
 		}
 	}
 	catch (const std::invalid_argument& e) {
@@ -103,10 +103,11 @@ dnnFaceDetectionInput initializeDnnFaceDetector() {
  * \param faceInput : parameters of the face detection algorithm
  * \param camera : camera object from opencv library
  */
-void callDnnFaceDetection(const dnnFaceDetectionInput& faceInput, cv::VideoCapture const& camera) {
+void callDnnFaceDetection(const dnnFaceDetectionInput& faceInput, cv::VideoCapture const& camera, faceDetectionOutput* output) {
+
 
 	dnnFaceDetecion detect(faceInput, camera);
 
-	detect.solve();
+	detect.solve(output);
 
 }

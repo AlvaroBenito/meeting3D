@@ -13,7 +13,7 @@
 
 faceDetection::faceDetection(const cv::VideoCapture& camera) : camera(camera) {}
 
-[[ noreturn ]]  void faceDetection::solve() {
+void faceDetection::solve(faceDetectionOutput* output) {
 	
 	// Variable where the cam info will be stored
 	cv::Mat image;
@@ -53,11 +53,21 @@ faceDetection::faceDetection(const cv::VideoCapture& camera) : camera(camera) {}
 		
 		if (*timing != 0.0) {
 			framesPerSecond = 1.0f / *timing;
-			std::cout << framesPerSecond << std::endl;
+			//std::cout << framesPerSecond << std::endl;
 		}
 		cv::imshow("Image", image);
 		cv::waitKey(2);
 		
+		std::scoped_lock<std::mutex> locked(output->mutex);
+		output->faceDetected = lastDetection;
+		if (lastDetection) {
+			output->framesPerSecond = framesPerSecond;
+			output->xCoordinate = faceCenter.x;
+			output->yCoordinate = faceCenter.y;
+		}
+		output->frameProcessed = true;
+		output->condition.notify_one();
+		std::cout << "notified" << std::endl;
 	}
 }
 

@@ -4,8 +4,8 @@
 #include "faceDetection/cascadeFaceDetection.hpp"
 
 cascadeFaceDetectionInput initializeCascadeFaceDetector();
-void callCascadeFaceDetection(cascadeFaceDetectionInput faceInput, cv::VideoCapture const& camera);
+void callCascadeFaceDetection(cascadeFaceDetectionInput faceInput, cv::VideoCapture const& camera, faceDetectionOutput* output);
 dnnFaceDetectionInput initializeDnnFaceDetector();
-void callDnnFaceDetection(const dnnFaceDetectionInput& faceInput, cv::VideoCapture const& camera);
+void callDnnFaceDetection(const dnnFaceDetectionInput& faceInput, cv::VideoCapture const& camera, faceDetectionOutput* output);
 
 	

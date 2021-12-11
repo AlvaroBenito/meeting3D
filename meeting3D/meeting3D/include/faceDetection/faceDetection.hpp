@@ -3,7 +3,7 @@
 #include <opencv2/videoio.hpp>
 #include <opencv2/objdetect.hpp>
 #include "cascadeFaceDetectionInput.hpp"
-
+#include "faceDetectionOutput.hpp"
 
 enum class faceDetectionType {
 	CASCADE_CLASSIFIER = 0,
@@ -31,7 +31,7 @@ public:
 
 	virtual ~faceDetection() = default;
 
-	void solve();
+	void solve(faceDetectionOutput* output);
 
 	virtual bool findFace(cv::Mat image, cv::Rect& lastContour) = 0;
 

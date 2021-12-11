@@ -33,6 +33,7 @@
     <ClInclude Include="include\faceDetection\faceDetection.hpp" />
     <ClInclude Include="include\faceDetection\cascadeFaceDetectionInput.hpp" />
     <ClInclude Include="include\faceDetection\faceDetectionInitializer.hpp" />
+    <ClInclude Include="include\faceDetection\faceDetectionOutput.hpp" />
     <ClInclude Include="include\utils\basicGeometry.hpp" />
     <ClInclude Include="include\utils\timer.hpp" />
     <ClInclude Include="include\utils\vector2D.hpp" />

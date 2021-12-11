@@ -62,5 +62,8 @@
     <ClInclude Include="include\faceDetection\faceDetectionInitializer.hpp">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="include\faceDetection\faceDetectionOutput.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

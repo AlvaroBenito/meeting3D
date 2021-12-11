@@ -5,8 +5,35 @@
 #include <opencv2/highgui.hpp>
 #include "opencv2/core/utils/logger.hpp"
 #include "faceDetection/faceDetectionInitializer.hpp"
+#define DNN
 
-//#define DNN
+
+void cascadeFaceDetectionReader(faceDetectionOutput* output) {
+	cv::VideoCapture camera(1);
+	cascadeFaceDetectionInput faceInput = initializeCascadeFaceDetector();
+    callCascadeFaceDetection(faceInput, camera, output);
+}
+
+void dnnFaceDetectionReader(faceDetectionOutput* output) {
+    cv::VideoCapture camera(1);
+	dnnFaceDetectionInput faceInput = initializeDnnFaceDetector();
+	callDnnFaceDetection(faceInput, camera, output);
+}
+
+// EXAMPLE CLASS FOR MUTEX HANDLING WITH FACE DETECTION OUTPUT
+void readFramesPerSecond(faceDetectionOutput* output) {
+    while (true) {
+        std::unique_lock locked(output->mutex);
+        output->condition.wait( locked, [&output] { return output->frameProcessed; });
+        output->frameProcessed = false;
+        locked.unlock();
+        
+        std::cout << "Awaken" << std::endl;
+    }
+}
+
+
+
 
 /// <summary>
 /// Main function of the program. The program flow is contained in this function.
@@ -19,15 +46,13 @@ int main() {
 
     // Declare camera port
     cv::VideoCapture camera(1);
+    faceDetectionOutput output(0.0, 0.0, 0.0, false);
 
 #ifdef DNN
-	dnnFaceDetectionInput faceInput = initializeDnnFaceDetector();
-    callDnnFaceDetection(faceInput, camera);
+	std::jthread faceDetectionThread(dnnFaceDetectionReader, &output);
 #else
-	cascadeFaceDetectionInput faceInput = initializeCascadeFaceDetector();
-	callCascadeFaceDetection(faceInput, camera);
+    std::jthread faceDetectionThread(cascadeFaceDetectionReader, &faceDetectionOutput);
 #endif
-
-    return 0;
+    
 }
 
