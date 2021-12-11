@@ -40,6 +40,9 @@
     <ClInclude Include="include\utils\timer.hpp" />
     <ClInclude Include="include\utils\vector2D.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\shaders\Basic.shader" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

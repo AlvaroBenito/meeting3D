@@ -51,12 +51,13 @@ int main() {
     // Declare camera port
     cv::VideoCapture camera(1);
     faceDetectionOutput output(0.0, 0.0, 0.0, false);
-
+/*
 #ifdef DNN
 	std::jthread faceDetectionThread(dnnFaceDetectionReader, &output);
 #else
     std::jthread faceDetectionThread(cascadeFaceDetectionReader, &output);
 #endif
+*/
     std::jthread framePrinter(generateWindow);
     
 }
