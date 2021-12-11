@@ -5,6 +5,8 @@
 #include <opencv2/highgui.hpp>
 #include "opencv2/core/utils/logger.hpp"
 #include "faceDetection/faceDetectionInitializer.hpp"
+#include "cameraController/glewTest.hpp"
+
 #define DNN
 
 
@@ -27,11 +29,13 @@ void readFramesPerSecond(faceDetectionOutput* output) {
         output->condition.wait( locked, [&output] { return output->frameProcessed; });
         output->frameProcessed = false;
         locked.unlock();
-        
-        std::cout << "Awaken" << std::endl;
+        std::cout << output->framesPerSecond << std::endl;
     }
 }
 
+void generateWindow() {
+    createWindow();
+}
 
 
 
@@ -51,8 +55,9 @@ int main() {
 #ifdef DNN
 	std::jthread faceDetectionThread(dnnFaceDetectionReader, &output);
 #else
-    std::jthread faceDetectionThread(cascadeFaceDetectionReader, &faceDetectionOutput);
+    std::jthread faceDetectionThread(cascadeFaceDetectionReader, &output);
 #endif
+    std::jthread framePrinter(generateWindow);
     
 }
 

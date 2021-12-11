@@ -53,7 +53,7 @@ void faceDetection::solve(faceDetectionOutput* output) {
 		
 		if (*timing != 0.0) {
 			framesPerSecond = 1.0f / *timing;
-			//std::cout << framesPerSecond << std::endl;
+			std::cout << framesPerSecond << std::endl;
 		}
 		cv::imshow("Image", image);
 		cv::waitKey(2);
@@ -67,7 +67,6 @@ void faceDetection::solve(faceDetectionOutput* output) {
 		}
 		output->frameProcessed = true;
 		output->condition.notify_one();
-		std::cout << "notified" << std::endl;
 	}
 }
 

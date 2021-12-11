@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\cameraController\glewTest.cpp" />
     <ClCompile Include="src\faceDetection\dnnFaceDetection.cpp" />
     <ClCompile Include="src\faceDetection\cascadeFaceDetection.cpp" />
     <ClCompile Include="src\faceDetection\faceDetection.cpp" />
@@ -27,6 +28,7 @@
     <ClCompile Include="src\utils\basicGeometry.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\cameraController\glewTest.hpp" />
     <ClInclude Include="include\faceDetection\cascadeFaceDetection.hpp" />
     <ClInclude Include="include\faceDetection\dnnFaceDetection.hpp" />
     <ClInclude Include="include\faceDetection\dnnFaceDetectionInput.hpp" />
@@ -101,17 +103,17 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\alvar\Downloads\Universidad\Master\TFM\Repo\meeting3D\Dependencies;C:\Program Files\MATLAB\R2020b\extern\include;C:\Users\alvar\Documents\openCV\opencv\build\include;C:\Users\alvar\Downloads\Universidad\Master\TFM\Repo\meeting3D\meeting3D\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\alvar\Downloads\Universidad\Master\TFM\Repo\meeting3D\Dependencies\GLFW\include;C:\Users\alvar\Downloads\Universidad\Master\TFM\Repo\meeting3D\Dependencies\GLEW\include;C:\Users\alvar\Documents\openCV\opencv\build\include;C:\Users\alvar\Downloads\Universidad\Master\TFM\Repo\meeting3D\meeting3D\include;$(IncludePath)</IncludePath>
     <ExternalIncludePath>C:\Users\alvar\Documents\openCV\opencv\build\include;$(ExternalIncludePath)</ExternalIncludePath>
-    <LibraryPath>C:\Program Files\MATLAB\R2020b\extern\lib\win64\microsoft;$(SolutionDir)Dependencies\opencv2\lib;C:\Users\alvar\Documents\openCV\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
-    <ExecutablePath>C:\Program Files\MATLAB\R2020b\bin\win64;$(ExecutablePath)</ExecutablePath>
+    <LibraryPath>C:\Users\alvar\Documents\openCV\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\alvar\Downloads\Universidad\Master\TFM\Repo\meeting3D\Dependencies;C:\Program Files\MATLAB\R2020b\extern\include;C:\Users\alvar\Downloads\Universidad\Master\TFM\Repo\meeting3D\meeting3D\include;C:\Users\alvar\Documents\openCV\opencv\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\alvar\Downloads\Universidad\Master\TFM\Repo\meeting3D\Dependencies\GLFW\include;C:\Users\alvar\Downloads\Universidad\Master\TFM\Repo\meeting3D\Dependencies\GLEW\include;C:\Users\alvar\Documents\openCV\opencv\build\include;C:\Users\alvar\Downloads\Universidad\Master\TFM\Repo\meeting3D\meeting3D\include;$(IncludePath)</IncludePath>
     <ExternalIncludePath>C:\Users\alvar\Documents\openCV\opencv\build\include;$(ExternalIncludePath)</ExternalIncludePath>
-    <LibraryPath>C:\Program Files\MATLAB\R2020b\extern\lib\win64\microsoft;C:\Users\alvar\Documents\openCV\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
-    <ExecutablePath>C:\Program Files\MATLAB\R2020b\bin\win64;$(ExecutablePath)</ExecutablePath>
+    <LibraryPath>C:\Users\alvar\Documents\openCV\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -146,15 +148,16 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)meeting3D/include;$(SolutionDir)Dependencies</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)meeting3D/include;$(SolutionDir)Dependencies/GLFW/include;$(SolutionDir)Dependencies/GLEW/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opencv_world453d.lib;%(AdditionalDependencies);libmx.lib;libeng.lib;libmex.lib;libmat.lib</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world453d.lib;%(AdditionalDependencies); glew32s.lib; glfw3.lib; opengl32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\GLFW\lib-vc2019;$(SolutionDir)Dependencies\GLEW\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -163,17 +166,18 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)meeting3D/include;$(SolutionDir)Dependencies</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)meeting3D/include;$(SolutionDir)Dependencies/GLFW/include;$(SolutionDir)Dependencies/GLEW/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opencv_world453.lib;%(AdditionalDependencies);libmx.lib;libeng.lib;libmex.lib;libmat.lib</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world453.lib;%(AdditionalDependencies); glew32s.lib; glfw3.lib; opengl32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\GLFW\lib-vc2019;$(SolutionDir)Dependencies\GLEW\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
