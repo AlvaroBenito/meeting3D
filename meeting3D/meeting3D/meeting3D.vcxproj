@@ -19,16 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\cameraController\glewTest.cpp" />
+    <ClCompile Include="src\openGL\glewTest.cpp" />
     <ClCompile Include="src\faceDetection\dnnFaceDetection.cpp" />
     <ClCompile Include="src\faceDetection\cascadeFaceDetection.cpp" />
     <ClCompile Include="src\faceDetection\faceDetection.cpp" />
     <ClCompile Include="src\faceDetection\faceDetectionInitializer.cpp" />
     <ClCompile Include="src\meeting3D.cpp" />
+    <ClCompile Include="src\openGL\indexBuffer.cpp" />
+    <ClCompile Include="src\openGL\renderer.cpp" />
+    <ClCompile Include="src\openGL\vertexBuffer.cpp" />
     <ClCompile Include="src\utils\basicGeometry.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\cameraController\glewTest.hpp" />
+    <ClInclude Include="include\openGL\glewTest.hpp" />
     <ClInclude Include="include\faceDetection\cascadeFaceDetection.hpp" />
     <ClInclude Include="include\faceDetection\dnnFaceDetection.hpp" />
     <ClInclude Include="include\faceDetection\dnnFaceDetectionInput.hpp" />
@@ -36,6 +39,9 @@
     <ClInclude Include="include\faceDetection\cascadeFaceDetectionInput.hpp" />
     <ClInclude Include="include\faceDetection\faceDetectionInitializer.hpp" />
     <ClInclude Include="include\faceDetection\faceDetectionOutput.hpp" />
+    <ClInclude Include="include\openGL\indexBuffer.hpp" />
+    <ClInclude Include="include\openGL\renderer.hpp" />
+    <ClInclude Include="include\openGL\vertexBuffer.hpp" />
     <ClInclude Include="include\utils\basicGeometry.hpp" />
     <ClInclude Include="include\utils\timer.hpp" />
     <ClInclude Include="include\utils\vector2D.hpp" />

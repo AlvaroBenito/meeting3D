@@ -5,7 +5,7 @@
 #include <opencv2/highgui.hpp>
 #include "opencv2/core/utils/logger.hpp"
 #include "faceDetection/faceDetectionInitializer.hpp"
-#include "cameraController/glewTest.hpp"
+#include "openGL/glewTest.hpp"
 
 #define DNN
 
