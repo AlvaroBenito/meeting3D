@@ -27,6 +27,8 @@
     <ClCompile Include="src\meeting3D.cpp" />
     <ClCompile Include="src\openGL\indexBuffer.cpp" />
     <ClCompile Include="src\openGL\renderer.cpp" />
+    <ClCompile Include="src\openGL\shader.cpp" />
+    <ClCompile Include="src\openGL\vertexArray.cpp" />
     <ClCompile Include="src\openGL\vertexBuffer.cpp" />
     <ClCompile Include="src\utils\basicGeometry.cpp" />
   </ItemGroup>
@@ -41,7 +43,10 @@
     <ClInclude Include="include\faceDetection\faceDetectionOutput.hpp" />
     <ClInclude Include="include\openGL\indexBuffer.hpp" />
     <ClInclude Include="include\openGL\renderer.hpp" />
+    <ClInclude Include="include\openGL\shader.hpp" />
+    <ClInclude Include="include\openGL\vertexArray.hpp" />
     <ClInclude Include="include\openGL\vertexBuffer.hpp" />
+    <ClInclude Include="include\openGL\vertexBufferLayout.hpp" />
     <ClInclude Include="include\utils\basicGeometry.hpp" />
     <ClInclude Include="include\utils\timer.hpp" />
     <ClInclude Include="include\utils\vector2D.hpp" />
